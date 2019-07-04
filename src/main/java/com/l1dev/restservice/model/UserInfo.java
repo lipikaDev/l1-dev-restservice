@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-public class NewTable {
+public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -17,10 +17,9 @@ public class NewTable {
     private String userText;
     private LocalDateTime addedAtTime;
     private String userCity;
-    private String userCountryCode;
     private BigDecimal geoLatitude;
     private BigDecimal geoLongitude;
-    private BigDecimal temperatureCelcius;
+    private BigDecimal temperatureCelsius;
 
 
     public Long getId() {
@@ -62,14 +61,6 @@ public class NewTable {
         this.userCity = userCity;
     }
 
-    public String getUserCountryCode() {
-        return userCountryCode;
-    }
-
-    public void setUserCountryCode(String userCountryCode) {
-        this.userCountryCode = userCountryCode;
-    }
-
     public BigDecimal getGeoLatitude() {
         return geoLatitude;
     }
@@ -86,11 +77,11 @@ public class NewTable {
         this.geoLongitude = geoLongitude;
     }
 
-    public BigDecimal getTemperatureCelcius() {
-        return temperatureCelcius;
+    public BigDecimal getTemperatureCelsius() {
+        return temperatureCelsius;
     }
 
-    public void setTemperatureCelcius(BigDecimal temperatureCelcius) {
-        this.temperatureCelcius = temperatureCelcius;
+    public void setTemperatureCelsius(BigDecimal temperatureCelsius) {
+        this.temperatureCelsius = temperatureCelsius;
     }
 }
