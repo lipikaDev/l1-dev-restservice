@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
@@ -24,9 +26,13 @@ public class UserInfoController {
                                        @RequestParam String requestUserCity) {
 
 
+        Map<String, String> uriVariables = new HashMap<String, String>();
+        uriVariables.put("q", requestUserCity);
+        uriVariables.put("APPID", "e866150e87b2e8ab6da4e8eda75efa5b");
+
         RestTemplate restTemplate = new RestTemplate();
         GeoInfo geoInfo =
-                restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather?q=Toronto&APPID=e866150e87b2e8ab6da4e8eda75efa5b", GeoInfo.class);
+                restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather", GeoInfo.class, uriVariables);
 
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(requestUserName);
