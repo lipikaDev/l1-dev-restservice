@@ -1,0 +1,99 @@
+<html>
+    <head>
+        <title>My html</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  -->
+        <script src="connection.js"></script>
+        <!-- <script src="connectjson.js"></script> -->
+        <script>
+                function outPutList() {
+                                        var getName = document.getElementById("inputName").value;
+                                        var getText = document.getElementById("inputText").value;
+                                        var getCity = document.getElementById("inputCity").value;
+                                                      // document.getElementById("outputName").innerHTML=""+outputName;
+                                                      // document.getElementById("outputText").innerHTML=""+outputText;
+                                                      // document.getElementById("outputCity").innerHTML=""+getCity;
+                                    }
+        </script>
+        <style>
+                table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                }
+                th, td {
+                  padding: 5px;
+                }
+                th {
+                  text-align: center;
+                }
+        </style>
+    </head>
+    <body>
+        <h1>My User Input form</h1>        
+          <fieldset>
+            <legend>Input Information</legend>
+            <form class="form-horizontal" id="userInput">
+              <div class="form-group form-group-lg">
+                <label class="col-sm-2 control-label">Name:</label>
+                <br>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputName"/>
+                </div>
+              </div>
+              <div class="form-group form-group-lg">
+                  <label class="col-sm-2 control-label">Your Text:</label>
+                  <br>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputText"/>
+                  </div>
+                </div>
+                <div class="form-group form-group-lg">
+                    <label class="col-sm-2 control-label">City:</label>
+                    <br>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputCity"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" id="bth-search"
+                                  class="btn btn-primary btn-lg">Done
+                          </button>
+                      </div>
+                  </div>
+                <!-- <fieldset>
+                    <legend>Input Information</legend>
+                    <br>
+                    Name: <br>
+                    <input id="inputName" type="text"/>
+                    <br><br>
+                    Your Text: <br>
+                    <input id="inputText" type="text"/>
+                    <br><br>
+                    City: <br>
+                    <input id="inputCity" type="text"/> 
+                    <br><br>
+                    <input id="input" type="button" value="Done" onclick="outPutList();"/>
+                </fieldset> -->
+             </form>
+            </fieldset>
+            <table class="table table-bordered table-striped" id="userinput_table" style="width:100%">
+                <caption>Saved User Input List</caption>
+                  <thead>
+                    <tr>
+                      <th>User Name</th>
+                      <th>Text </th> 
+                      <th>City</th>
+                      <th>Lattitude</th>
+                      <th>Longitude</th>
+                      <th>Temperature</th>
+                    </tr>
+                  </thead>
+                  <tbody id="userdata">
+                  </tbody>
+            </table>    
+      
+    </body>
+</html>
+
