@@ -3,6 +3,7 @@ package com.l1dev.restservice.controller;
 import com.l1dev.restservice.Repository.UserInfoRepository;
 import com.l1dev.restservice.domain.GeoInfo;
 import com.l1dev.restservice.model.UserInfo;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -34,6 +35,9 @@ public class UserInfoController {
         GeoInfo geoInfo =
                 restTemplate.getForObject("http://api.openweathermap.org/data/2.5/weather", GeoInfo.class, uriVariables);
 
+        BigDecimal celsiusConversion = BigDecimal.valueOf(273.15);
+        val celsiusTemperature = geoInfo.getMain().getTemp() != null ? geoInfo.getMain().getTemp().subtract(celsiusConversion): BigDecimal.ZERO;
+
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(requestUserName);
         userInfo.setUserText(requestUserText);
@@ -41,7 +45,7 @@ public class UserInfoController {
         userInfo.setUserCity(requestUserCity);
         userInfo.setGeoLatitude(geoInfo.getCoord().getLat() != null ? geoInfo.getCoord().getLat() : BigDecimal.ZERO);
         userInfo.setGeoLongitude(geoInfo.getCoord().getLat() != null ? geoInfo.getCoord().getLon() : BigDecimal.ZERO);
-        userInfo.setTemperatureCelsius(geoInfo.getMain().getTemp() != null ? geoInfo.getMain().getTemp() : BigDecimal.ZERO);
+        userInfo.setTemperatureCelsius(celsiusTemperature);
 
         userInfoRepository.save(userInfo);
 
